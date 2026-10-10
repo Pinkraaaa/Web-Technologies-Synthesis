@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motor | Barrier/Fix</title>
+  <meta name="description" content="How tiny buttons, missing labels and hidden focus shut out people with motor disabilities, and how to fix them.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-motor">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html"><span>Barrier</span><i aria-hidden="true">/</i><b>Fix</b></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hearing.html">Hearing</a></li>
+        <li><a href="low-vision.html">Low vision</a></li>
+        <li><a href="colour-blindness.html">Colour blindness</a></li>
+        <li><a href="dyslexia.html">Dyslexia</a></li>
+        <li><a href="motor.html" aria-current="page">Motor</a></li>
+        <li><a href="checklist.html">Checklist</a></li>
+        <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="page-intro" aria-labelledby="title">
+      <div>
+        <span class="tagline">Motor and mobility</span>
+        <h1 id="title">Motor</h1>
+        <p class="lead">People with tremors, limited hand movement or no mouse at all need targets they can hit and a page they can use with a keyboard. Here is a made-up airtime top-up form.</p>
+      </div>
+      <aside class="stat-card" aria-label="Key fact">
+        <p><strong>Everyone</strong> browses one-handed sometimes: a broken arm, a baby on your hip, a bumpy trotro.</p>
+        <small>Permanent, temporary or situational</small>
+      </aside>
+    </section>
+
+    <section class="demo" aria-labelledby="demo-title">
+      <div class="demo-head">
+        <h2 id="demo-title">Try it</h2>
+        <p>Try pressing Tab through the form, then switch on the fixes.</p>
+      </div>
+      <input class="switch-input" type="checkbox" id="fix" role="switch">
+      <label class="switch" for="fix">
+        <span class="switch-word barrier-word" aria-hidden="true">Barrier</span>
+        <span class="switch-track" aria-hidden="true"></span>
+        <span class="switch-word fixed-word" aria-hidden="true">Fixed</span>
+        <span class="visually-hidden">Show the accessible version of the airtime form</span>
+      </label>
+      <div class="stage">
+        <article class="mock" aria-label="Example airtime top-up form">
+          <div class="mock-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span>topup.example/airtime</span></div>
+          <div class="mock-body">
+            <h3 class="mock-title">Buy airtime</h3>
+            <form class="tiny-form when-barrier" action="#">
+              <p style="margin:0 0 .5rem">
+                <input type="radio" name="net-a" id="a-mtn"><label for="a-mtn">MTN</label>
+                <input type="radio" name="net-a" id="a-tel"><label for="a-tel">Telecel</label>
+                <input type="radio" name="net-a" id="a-at"><label for="a-at">AT</label>
+              </p>
+              <p style="margin:0">
+                <input type="tel" placeholder="Number" aria-label="Number">
+                <button class="tiny-btn" type="button">OK</button>
+              </p>
+              <p class="cramped-links"><a href="#main">Terms</a>|<a href="#main">Privacy</a>|<a href="#main">Help</a></p>
+            </form>
+            <form class="big-form when-fixed" action="#">
+              <fieldset>
+                <legend>Choose your network</legend>
+                <label class="choice"><input type="radio" name="net-b" value="mtn"> MTN</label>
+                <label class="choice"><input type="radio" name="net-b" value="telecel"> Telecel</label>
+                <label class="choice"><input type="radio" name="net-b" value="airteltigo"> AirtelTigo</label>
+              </fieldset>
+              <label class="field-label" for="b-phone">Phone number</label>
+              <span class="hint" id="b-hint">10 digits, for example 024 123 4567</span>
+              <input type="tel" id="b-phone" aria-describedby="b-hint" autocomplete="tel">
+              <button class="big-btn" type="button">Buy airtime</button>
+              <ul class="spaced-links"><li><a href="#main">Terms</a></li><li><a href="#main">Privacy</a></li><li><a href="#main">Help</a></li></ul>
+            </form>
+          </div>
+        </article>
+        <ol class="notes">
+          <li><span class="num" aria-hidden="true">1</span>
+            <p class="when-barrier"><strong>Tiny, cramped targets.</strong> Small radio buttons and links are easy to miss or mis-tap.</p>
+            <p class="when-fixed"><strong>Large targets with space.</strong> Every control is at least 44 pixels tall.</p></li>
+          <li><span class="num" aria-hidden="true">2</span>
+            <p class="when-barrier"><strong>No visible focus.</strong> Keyboard users can't see where they are on the page.</p>
+            <p class="when-fixed"><strong>A clear focus outline.</strong> A thick blue ring follows the keyboard.</p></li>
+          <li><span class="num" aria-hidden="true">3</span>
+            <p class="when-barrier"><strong>A placeholder instead of a label.</strong> The hint disappears as soon as you start typing.</p>
+            <p class="when-fixed"><strong>Real labels and a hint.</strong> The label and example format stay visible.</p></li>
+          <li><span class="num" aria-hidden="true">4</span>
+            <p class="when-barrier"><strong>&quot;OK&quot; button.</strong> It doesn't say what will happen.</p>
+            <p class="when-fixed"><strong>&quot;Buy airtime&quot; button.</strong> The button names its action.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section two-col reveal" aria-labelledby="who">
+      <div class="prose">
+        <h2 id="who">Who this affects</h2>
+        <p>Motor disabilities include cerebral palsy, Parkinson's, arthritis, paralysis and injuries. Some people use only a keyboard, a switch device, voice control or a mouth stick. Big, well-spaced targets also help anyone holding a phone in one hand on a bumpy ride.</p>
+        <p>Good forms use a <code>&lt;label&gt;</code> for every control and a <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code> for groups, like the network choice above.</p>
+      </div>
+      <div class="card">
+        <h2>Tips for your own pages</h2>
+        <ul class="tips">
+          <li>Make buttons and links at least 44 by 44 pixels.</li>
+          <li>Leave space between links so people don't hit the wrong one.</li>
+          <li>Never remove the focus outline without a better one.</li>
+          <li>Make sure everything works with only <kbd>Tab</kbd>, <kbd>Enter</kbd> and <kbd>Space</kbd>.</li>
+          <li>Use labels, not placeholders, to name inputs.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="code">
+      <h2 id="code">The code behind the fix</h2>
+<pre><code>&lt;fieldset&gt;
+  &lt;legend&gt;Choose your network&lt;/legend&gt;
+  &lt;label&gt;&lt;input type="radio" name="network" value="mtn"&gt; MTN&lt;/label&gt;
+&lt;/fieldset&gt;
+
+&lt;label for="phone"&gt;Phone number&lt;/label&gt;
+&lt;input type="tel" id="phone"&gt;
+
+/* CSS */
+button { min-height: 44px; }
+:focus-visible { outline: 3px solid #1D4ED8; }</code></pre>
+    </section>
+
+    <nav class="pager" aria-label="Previous and next page">
+      <a class="prev" href="dyslexia.html"><small>Previous</small>Dyslexia</a>
+      <a class="next" href="checklist.html"><small>Next</small>Checklist</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-big">If one person can't get in, the website <em>isn't finished.</em></p>
+      <p><strong>Barrier/Fix</strong> is a student project about web accessibility, built with HTML and CSS only.</p>
+      <p>Made by Ewurabena Pinkra Amissah-Arthur &middot; 2026 &middot; <a href="about.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+</body>
+</html>

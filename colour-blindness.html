@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colour blindness | Barrier/Fix</title>
+  <meta name="description" content="How using colour as the only signal confuses colour-blind visitors, and how labels and patterns fix it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-colour">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html"><span>Barrier</span><i aria-hidden="true">/</i><b>Fix</b></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hearing.html">Hearing</a></li>
+        <li><a href="low-vision.html">Low vision</a></li>
+        <li><a href="colour-blindness.html" aria-current="page">Colour blindness</a></li>
+        <li><a href="dyslexia.html">Dyslexia</a></li>
+        <li><a href="motor.html">Motor</a></li>
+        <li><a href="checklist.html">Checklist</a></li>
+        <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="page-intro" aria-labelledby="title">
+      <div>
+        <span class="tagline">Colour vision</span>
+        <h1 id="title">Colour blindness</h1>
+        <p class="lead">When colour is the <em>only</em> way to tell things apart, people who can't separate red from green are left guessing. Here is a made-up trotro seat booking page.</p>
+      </div>
+      <aside class="stat-card" aria-label="Key fact">
+        <p><strong>1 in 12</strong> men, and about 1 in 200 women, have some form of colour blindness.</p>
+        <small>Colour Blind Awareness</small>
+      </aside>
+    </section>
+
+    <section class="demo" aria-labelledby="demo-title">
+      <div class="demo-head">
+        <h2 id="demo-title">Try it</h2>
+        <p>Compare the two seat maps, then switch on the fixes.</p>
+      </div>
+      <input class="switch-input" type="checkbox" id="fix" role="switch">
+      <label class="switch" for="fix">
+        <span class="switch-word barrier-word" aria-hidden="true">Barrier</span>
+        <span class="switch-track" aria-hidden="true"></span>
+        <span class="switch-word fixed-word" aria-hidden="true">Fixed</span>
+        <span class="visually-hidden">Show the accessible version of the seat booking page</span>
+      </label>
+      <div class="stage">
+        <article class="mock" aria-label="Example trotro seat booking page">
+          <div class="mock-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span>trotro.example/kaneshie-circle</span></div>
+          <div class="mock-body">
+            <h3 class="mock-title">Kaneshie to Circle, 7:30 am</h3>
+            <p class="when-barrier" style="font-size:.9rem">Choose a <span style="color:#2E9E4F;font-weight:700">green</span> seat to book it.</p>
+            <p class="when-fixed" style="font-size:.9rem">Choose any seat marked <strong>✓ Free</strong> to book it.</p>
+            <ul class="legend">
+              <li><span class="swatch taken" aria-hidden="true"></span><span class="when-fixed">✕ </span>Taken</li>
+              <li><span class="swatch free" aria-hidden="true"></span><span class="when-fixed">✓ </span>Free</li>
+            </ul>
+            <p class="stage-label" style="color:#555">How most people see it</p>
+            <ul class="seats"><li class="seat taken">Seat 1<small class="when-fixed"><br>✕ Taken</small></li><li class="seat free">Seat 2<small class="when-fixed"><br>✓ Free</small></li><li class="seat taken">Seat 3<small class="when-fixed"><br>✕ Taken</small></li><li class="seat free">Seat 4<small class="when-fixed"><br>✓ Free</small></li><li class="seat free">Seat 5<small class="when-fixed"><br>✓ Free</small></li><li class="seat taken">Seat 6<small class="when-fixed"><br>✕ Taken</small></li><li class="seat taken">Seat 7<small class="when-fixed"><br>✕ Taken</small></li><li class="seat free">Seat 8<small class="when-fixed"><br>✓ Free</small></li></ul>
+            <p class="stage-label" style="color:#555">Roughly how it looks with red-green colour blindness</p>
+            <ul class="seats sim"><li class="seat taken">Seat 1<small class="when-fixed"><br>✕ Taken</small></li><li class="seat free">Seat 2<small class="when-fixed"><br>✓ Free</small></li><li class="seat taken">Seat 3<small class="when-fixed"><br>✕ Taken</small></li><li class="seat free">Seat 4<small class="when-fixed"><br>✓ Free</small></li><li class="seat free">Seat 5<small class="when-fixed"><br>✓ Free</small></li><li class="seat taken">Seat 6<small class="when-fixed"><br>✕ Taken</small></li><li class="seat taken">Seat 7<small class="when-fixed"><br>✕ Taken</small></li><li class="seat free">Seat 8<small class="when-fixed"><br>✓ Free</small></li></ul>
+          </div>
+        </article>
+        <ol class="notes">
+          <li><span class="num" aria-hidden="true">1</span>
+            <p class="when-barrier"><strong>Colour is the only clue.</strong> In the lower map, taken and free seats look almost the same.</p>
+            <p class="when-fixed"><strong>Text and symbols added.</strong> Every seat says Free or Taken, with ✓ or ✕.</p></li>
+          <li><span class="num" aria-hidden="true">2</span>
+            <p class="when-barrier"><strong>The instruction names a colour.</strong> &quot;Choose a green seat&quot; is useless if you can't see green.</p>
+            <p class="when-fixed"><strong>The instruction names a state.</strong> &quot;Choose a seat marked Free&quot; works for everyone.</p></li>
+          <li><span class="num" aria-hidden="true">3</span>
+            <p class="when-barrier"><strong>No shape or pattern difference.</strong> Seats differ by colour and nothing else.</p>
+            <p class="when-fixed"><strong>Patterns help too.</strong> Taken seats get stripes and free seats get a white border.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section two-col reveal" aria-labelledby="who">
+      <div class="prose">
+        <h2 id="who">Who this affects</h2>
+        <p>About <strong>1 in 12 men</strong> and <strong>1 in 200 women</strong> have some kind of colour blindness. The most common type makes red and green hard to tell apart, which is exactly the pair used for "stop" and "go", "error" and "success", "taken" and "free".</p>
+        <p>Colour still helps. The rule is simply that it should never be the <em>only</em> signal.</p>
+      </div>
+      <div class="card">
+        <h2>Tips for your own pages</h2>
+        <ul class="tips">
+          <li>Pair colour with text, icons or patterns.</li>
+          <li>Underline links instead of relying on link colour alone.</li>
+          <li>Label form errors in words, not just with a red border.</li>
+          <li>Avoid instructions like "click the green button".</li>
+          <li>Test with a colour blindness simulator before you publish.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="code">
+      <h2 id="code">The code behind the fix</h2>
+<pre><code>&lt;li class="seat taken"&gt;Seat 3 &lt;small&gt;✕ Taken&lt;/small&gt;&lt;/li&gt;
+
+/* CSS: a pattern as well as a colour */
+.seat.taken {
+  background-color: #D33A2C;
+  background-image: repeating-linear-gradient(45deg, rgba(0,0,0,.35) 0 4px, transparent 4px 9px);
+}</code></pre>
+    </section>
+
+    <nav class="pager" aria-label="Previous and next page">
+      <a class="prev" href="low-vision.html"><small>Previous</small>Low vision</a>
+      <a class="next" href="dyslexia.html"><small>Next</small>Dyslexia</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-big">If one person can't get in, the website <em>isn't finished.</em></p>
+      <p><strong>Barrier/Fix</strong> is a student project about web accessibility, built with HTML and CSS only.</p>
+      <p>Made by Ewurabena Pinkra Amissah-Arthur &middot; 2026 &middot; <a href="about.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+</body>
+</html>

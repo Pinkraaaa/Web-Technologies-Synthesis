@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hearing | Barrier/Fix</title>
+  <meta name="description" content="How a news page shuts out Deaf and hard of hearing readers, and how captions, transcripts and text alerts fix it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-hearing">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html"><span>Barrier</span><i aria-hidden="true">/</i><b>Fix</b></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hearing.html" aria-current="page">Hearing</a></li>
+        <li><a href="low-vision.html">Low vision</a></li>
+        <li><a href="colour-blindness.html">Colour blindness</a></li>
+        <li><a href="dyslexia.html">Dyslexia</a></li>
+        <li><a href="motor.html">Motor</a></li>
+        <li><a href="checklist.html">Checklist</a></li>
+        <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="page-intro" aria-labelledby="title">
+      <div>
+        <span class="tagline">Deaf and hard of hearing</span>
+        <h1 id="title">Hearing</h1>
+        <p class="lead">When important information only comes through sound, people who are Deaf or hard of hearing simply never receive it. Here is a flood warning from a made-up Ghanaian news site.</p>
+      </div>
+      <aside class="stat-card" aria-label="Key fact">
+        <p><strong>1.5 billion</strong> people live with some degree of hearing loss.</p>
+        <small>World Health Organization</small>
+      </aside>
+    </section>
+
+    <section class="demo" aria-labelledby="demo-title">
+      <div class="demo-head">
+        <h2 id="demo-title">Try it</h2>
+        <p>Turn your sound <strong>off</strong>, press play, and try to find out which roads will flood. Then flip the switch.</p>
+      </div>
+      <input class="switch-input" type="checkbox" id="fix" role="switch">
+      <label class="switch" for="fix">
+        <span class="switch-word barrier-word" aria-hidden="true">Barrier</span>
+        <span class="switch-track" aria-hidden="true"></span>
+        <span class="switch-word fixed-word" aria-hidden="true">Fixed</span>
+        <span class="visually-hidden">Show the accessible version of the news page</span>
+      </label>
+      <div class="stage">
+        <article class="mock" aria-label="Example news page from Accra Daily">
+          <div class="mock-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span>accradaily.example/weather</span></div>
+          <div class="mock-body">
+            <div class="masthead"><strong>Accra Daily</strong><small>Fri 9 Oct</small></div>
+            <div class="sound-alert when-barrier">
+              <p>🔊 Listen to today's alert</p>
+              <audio controls preload="none" src="media/flood-alert.mp3" aria-label="Today's alert, audio only"></audio>
+            </div>
+            <p class="text-alert when-fixed"><strong>Flood warning:</strong> avoid Kaneshie, Odawna and Circle from Friday night to Saturday afternoon. Do not drive through flood water.</p>
+            <h3 class="mock-title">Heavy rain expected across Greater Accra this weekend</h3>
+            <p class="news-text">Our weather team explains what to expect and which areas to avoid. Press play and turn your sound on.</p>
+            <p class="cc-state"><span class="when-barrier">✕ Captions: none</span><span class="when-fixed">✓ Captions: English (CC)</span></p>
+            <div class="player">
+              <video controls preload="metadata" playsinline poster="media/weather-poster.jpg" aria-describedby="video-desc">
+                <source src="media/weather.mp4" type="video/mp4">
+                <source src="media/weather.webm" type="video/webm">
+                <!-- The captions below are media/weather.vtt, embedded as a data URL so they also work
+                     when the page is opened straight from your computer (Chrome blocks local .vtt files).
+                     On a web server you can use src="media/weather.vtt" instead. -->
+                <track kind="captions" src="data:text/vtt;base64,V0VCVlRUCgpOT1RFIENhcHRpb25zIGZvciB0aGUgQWNjcmEgRGFpbHkgd2VhdGhlciB1cGRhdGUgKG1hZGUtdXAgZXhhbXBsZSBmb3IgQmFycmllci9GaXgpLgoKMQowMDowMC4wMDAgLS0+IDAwOjAyLjQwMApbVXBiZWF0IG5ld3MgdGhlbWVdCgoyCjAwOjAyLjcwMCAtLT4gMDA6MDQuNTY0Ckdvb2QgZXZlbmluZywgYW5kIHdlbGNvbWUgdG8geW91cgoKMwowMDowNC41NjQgLS0+IDAwOjA3LjEwNQpBY2NyYSBEYWlseSB3ZWF0aGVyIHVwZGF0ZSBmb3IgR3JlYXRlciBBY2NyYS4KCjQKMDA6MDcuODA1IC0tPiAwMDoxMS44ODMKSGVhdnkgcmFpbiBpcyBleHBlY3RlZCBmcm9tIEZyaWRheSBuaWdodCBpbnRvIFNhdHVyZGF5IGFmdGVybm9vbi4KCjUKMDA6MTIuNTgzIC0tPiAwMDoxNS43NDIKRmxvb2RpbmcgaXMgbGlrZWx5IGFyb3VuZCBLYW5lc2hpZSwgT2Rhd25hIGFuZCBDaXJjbGUuCgo2CjAwOjE2LjQ0MiAtLT4gMDA6MjAuMDczClBsZWFzZSBhdm9pZCBsb3ctbHlpbmcgcm9hZHMsIGFuZCBzdGF5IGluZG9vcnMgaWYgeW91IGNhbi4KCjcKMDA6MjAuNzczIC0tPiAwMDoyMi41ODkKVXBkYXRlcyB3aWxsIGJlIHNlbnQgYnkgdGV4dAoKOAowMDoyMi41ODkgLS0+IDAwOjI0LjI3NQphbmQgcG9zdGVkIG9uIG91ciB3ZWJzaXRlLgoKOQowMDoyNC4yNzUgLS0+IDAwOjI1LjM3NwpTdGF5IHNhZmUsIEFjY3JhLgoKMTAKMDA6MjYuMDc3IC0tPiAwMDoyOC42NzcKW1RodW5kZXIgcnVtYmxlcywgcmFpbiBnZXRzIGhlYXZpZXJdCgoxMQowMDoyOC42NzcgLS0+IDAwOjMxLjE3NwpbQ2xvc2luZyBtdXNpY10K" srclang="en" label="English" default>
+                Your browser can't play this video. <a href="media/weather.mp4">Download the weather video</a>.
+              </video>
+            </div>
+            <p id="video-desc" class="visually-hidden">Weather update for Greater Accra, 31 seconds. A presenter speaks over an animated rain map that marks a flood warning for Kaneshie, Odawna and Circle.</p>
+            <details class="when-fixed">
+              <summary>Read the transcript</summary>
+              <ol>
+                <li><span>0:00</span>[Upbeat news theme]</li>
+                <li><span>0:03</span>Good evening, and welcome to your Accra Daily weather update for Greater Accra.</li>
+                <li><span>0:08</span>Heavy rain is expected from Friday night into Saturday afternoon.</li>
+                <li><span>0:13</span>Flooding is likely around Kaneshie, Odawna and Circle.</li>
+                <li><span>0:16</span>Please avoid low-lying roads, and stay indoors if you can.</li>
+                <li><span>0:21</span>Updates will be sent by text and posted on our website. Stay safe, Accra.</li>
+                <li><span>0:26</span>[Thunder rumbles, rain gets heavier]</li>
+                <li><span>0:29</span>[Closing music]</li>
+              </ol>
+            </details>
+            <p class="mock-foot when-barrier">Questions? Call our newsroom on 030 000 0000.</p>
+            <p class="mock-foot when-fixed">Questions? Call or text 030 000 0000, email <a href="#main">news@accradaily.example</a>, or use our contact form.</p>
+          </div>
+        </article>
+        <ol class="notes">
+          <li><span class="num" aria-hidden="true">1</span>
+            <p class="when-barrier"><strong>The alert is sound only.</strong> Press play on it with your sound off. You never learn which roads are flooding.</p>
+            <p class="when-fixed"><strong>The alert is written out.</strong> The same warning, readable at a glance.</p></li>
+          <li><span class="num" aria-hidden="true">2</span>
+            <p class="when-barrier"><strong>The video has no captions.</strong> All the safety advice is spoken, so it is lost.</p>
+            <p class="when-fixed"><strong>Captions are on.</strong> A caption file is linked to the video, so speech and sounds appear as text, timed to the second.</p></li>
+          <li><span class="num" aria-hidden="true">3</span>
+            <p class="when-barrier"><strong>There is no transcript.</strong> Nothing to read, search or translate later.</p>
+            <p class="when-fixed"><strong>A transcript sits below.</strong> It includes sounds like thunder, not just speech.</p></li>
+          <li><span class="num" aria-hidden="true">4</span>
+            <p class="when-barrier"><strong>Phone is the only contact.</strong> Many Deaf people can't use voice calls.</p>
+            <p class="when-fixed"><strong>More ways to get in touch.</strong> Text, email and a form, not just a call.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section two-col reveal" aria-labelledby="who">
+      <div class="prose">
+        <h2 id="who">Who this affects</h2>
+        <p>More than <strong>1.5 billion</strong> people live with some degree of hearing loss, according to the World Health Organization. Some are <em>Deaf</em> and use a sign language, such as Ghanaian Sign Language, as their first language. Others are hard of hearing and rely on captions and lip reading.</p>
+        <p>Captions also help people who are watching in a noisy place, on mute in class, or still learning English.</p>
+      </div>
+      <div class="card">
+        <h2>Tips for your own pages</h2>
+        <ul class="tips">
+          <li>Add captions to every video, and check they are accurate.</li>
+          <li>Offer a written transcript for audio and video.</li>
+          <li>Never put important information <em>only</em> in sound.</li>
+          <li>Give more than one way to contact you.</li>
+          <li>Write in plain language. For many Deaf readers, English is a second language.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="code">
+      <h2 id="code">The code behind the fix</h2>
+      <p class="prose">The <code>&lt;track&gt;</code> element links a caption file to a video. The caption file is a plain text file ending in <code>.vtt</code>, with a start time, an end time and the words for each line. Sounds go in square brackets so Deaf viewers know about the thunder too.</p>
+<pre><code>&lt;video controls poster="media/weather-poster.jpg"&gt;
+  &lt;source src="media/weather.mp4" type="video/mp4"&gt;
+  &lt;track kind="captions" src="media/weather.vtt" srclang="en" label="English" default&gt;
+&lt;/video&gt;
+
+&lt;!-- media/weather.vtt (the real file used above) --&gt;
+WEBVTT
+
+00:02.700 --&gt; 00:04.564
+Good evening, and welcome to your
+
+00:12.583 --&gt; 00:15.742
+Flooding is likely around Kaneshie, Odawna and Circle.
+
+00:26.077 --&gt; 00:28.677
+[Thunder rumbles, rain gets heavier]
+
+/* CSS: style the captions */
+video::cue { background: rgba(0,0,0,.85); color: #fff; }</code></pre>
+    </section>
+
+    <nav class="pager" aria-label="Previous and next page">
+      <a class="prev" href="index.html"><small>Previous</small>Home</a>
+      <a class="next" href="low-vision.html"><small>Next</small>Low vision</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-big">If one person can't get in, the website <em>isn't finished.</em></p>
+      <p><strong>Barrier/Fix</strong> is a student project about web accessibility, built with HTML and CSS only.</p>
+      <p>Made by Ewurabena Pinkra Amissah-Arthur &middot; 2026 &middot; <a href="about.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+</body>
+</html>

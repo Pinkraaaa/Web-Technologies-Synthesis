@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Barrier/Fix</title>
+  <meta name="description" content="About Barrier/Fix: the accessibility statement, how the site was tested, and a feedback form.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-about">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html"><span>Barrier</span><i aria-hidden="true">/</i><b>Fix</b></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hearing.html">Hearing</a></li>
+        <li><a href="low-vision.html">Low vision</a></li>
+        <li><a href="colour-blindness.html">Colour blindness</a></li>
+        <li><a href="dyslexia.html">Dyslexia</a></li>
+        <li><a href="motor.html">Motor</a></li>
+        <li><a href="checklist.html">Checklist</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="page-intro" aria-labelledby="title">
+      <div>
+        <span class="tagline">Accessibility statement</span>
+        <h1 id="title">About this site</h1>
+        <p class="lead">Barrier/Fix was built to show, not just tell, why accessibility matters. Flip a switch, feel the difference. It uses only HTML and CSS, with no JavaScript.</p>
+      </div>
+      <aside class="stat-card" aria-label="Key fact">
+        <p><strong>0 lines</strong> of JavaScript. Every switch on this site is HTML and CSS.</p>
+        <small>How it was built</small>
+      </aside>
+    </section>
+
+    <section class="section two-col reveal" aria-labelledby="built">
+      <div class="prose">
+        <h2 id="built">How this site was built</h2>
+        <ul class="tips">
+          <li>Semantic HTML: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code> and <code>&lt;footer&gt;</code> on every page.</li>
+          <li>One external stylesheet shared by all eight pages.</li>
+          <li>A skip link, visible keyboard focus and a consistent menu.</li>
+          <li>The Barrier/Fixed switch is a real checkbox with a label, so it works with a keyboard and screen readers.</li>
+          <li>Text in <code>rem</code> units, a responsive layout, and animations that stop if you prefer reduced motion.</li>
+          <li>A real video with a <code>&lt;track&gt;</code> caption file and a full transcript.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Known limits</h2>
+        <p>The weather video on the <a href="hearing.html">Hearing</a> page is a real <code>&lt;video&gt;</code> with sound and a real WebVTT caption file. The presenter's voice is computer-generated, and the news site and forecast are made up.</p>
+        <p>In Barrier mode the captions are hidden with CSS to show the problem. Your browser's own CC button may still appear.</p>
+        <p>The colour blindness map is a rough simulation and not exact for every type of colour vision.</p>
+      </div>
+    </section>
+
+    <section class="section two-col reveal" aria-labelledby="feedback-title">
+      <div class="prose">
+        <h2 id="feedback-title">Send feedback</h2>
+        <p>Found a barrier on this site? Tell us. Fields marked <strong>(required)</strong> must be filled in.</p>
+        <p style="color:var(--ink-soft);font-size:.9rem">This is a demo form, so your answers are not sent anywhere.</p>
+      </div>
+
+      <form class="feedback card" action="#" method="get">
+        <div class="form-field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="email">Email (required)</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="page">Which page?</label>
+          <select id="page" name="page">
+            <option>Home</option>
+            <option>Hearing</option>
+            <option>Low vision</option>
+            <option>Colour blindness</option>
+            <option>Dyslexia</option>
+            <option>Motor</option>
+            <option>Checklist</option>
+          </select>
+        </div>
+        <fieldset>
+          <legend>Did the switch work for you? (required)</legend>
+          <label class="choice"><input type="radio" name="worked" value="yes" required> Yes</label>
+          <label class="choice"><input type="radio" name="worked" value="no"> No</label>
+        </fieldset>
+        <fieldset>
+          <legend>How did you browse the site?</legend>
+          <label class="choice"><input type="checkbox" name="browse" value="mouse"> Mouse or touch</label>
+          <label class="choice"><input type="checkbox" name="browse" value="keyboard"> Keyboard only</label>
+          <label class="choice"><input type="checkbox" name="browse" value="screen-reader"> Screen reader</label>
+          <label class="choice"><input type="checkbox" name="browse" value="zoom"> Zoomed in</label>
+        </fieldset>
+        <div class="form-field">
+          <label for="message">What happened?</label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        <button class="button" type="submit">Send feedback</button>
+      </form>
+    </section>
+
+    <section class="section reveal" aria-labelledby="sources">
+      <h2 id="sources">Sources and further reading</h2>
+      <ul class="tips">
+        <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility">MDN: Accessibility</a></li>
+        <li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C: Web Content Accessibility Guidelines (WCAG)</a></li>
+        <li><a href="https://www.who.int/health-topics/disability">World Health Organization: Disability</a></li>
+        <li><a href="https://wave.webaim.org/">WAVE accessibility checker</a></li>
+      </ul>
+    </section>
+
+    <nav class="pager" aria-label="Previous and next page">
+      <a class="prev" href="checklist.html"><small>Previous</small>Checklist</a>
+      
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-big">If one person can't get in, the website <em>isn't finished.</em></p>
+      <p><strong>Barrier/Fix</strong> is a student project about web accessibility, built with HTML and CSS only.</p>
+      <p>Made by Ewurabena Pinkra Amissah-Arthur &middot; 2026 &middot; <a href="about.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+</body>
+</html>

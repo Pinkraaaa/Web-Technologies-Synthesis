@@ -1,0 +1,1006 @@
+/* =========================================================
+   Barrier/Fix — shared stylesheet for every page
+   One external stylesheet keeps all pages consistent.
+   HTML and CSS only: no JavaScript anywhere on the site.
+   ========================================================= */
+
+/* ---------- 1. Colours and fonts (custom properties) ---------- */
+:root {
+  --page: #F4F2EC;
+  --surface: #FFFFFF;
+  --ink: #15161A;
+  --ink-soft: #4A4E57;
+  --line: #DEDBD2;
+  --night: #0F1115;
+  --charcoal: #1E2026;
+
+  --gold: #F5C33B;
+  --gold-soft: #FFE7A3;
+  --green: #0E6B47;
+  --red: #B3261E;
+  --coral: #FF7A6B;
+  --sky: #7CCBFF;
+  --lilac: #BBA3FF;
+  --mint: #6BD9A4;
+
+  --accent: var(--gold);           /* each page sets its own accent */
+
+  --radius: 20px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 18px 40px -24px rgba(0, 0, 0, 0.35);
+
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
+  --font-head: "Bricolage Grotesque", "Arial Black", Arial, sans-serif;
+  --font-news: "Source Serif 4", Georgia, serif;
+}
+
+/* one accent colour per page, set on <body> */
+.theme-hearing   { --accent: var(--gold); }
+.theme-vision    { --accent: var(--sky); }
+.theme-colour    { --accent: var(--coral); }
+.theme-dyslexia  { --accent: var(--lilac); }
+.theme-motor     { --accent: var(--mint); }
+.theme-checklist { --accent: var(--mint); }
+.theme-about     { --accent: var(--gold); }
+
+/* ---------- 2. Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* the alternative box model from the box model lesson */
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  overflow-x: clip;       /* stops full-width bands causing sideways scroll */
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+img, video { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.6rem;
+  font-weight: 800;
+}
+h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); }
+h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
+h3 { font-size: 1.15rem; }
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--green); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+
+code {
+  font-size: 0.9em;
+  padding: 0.05em 0.35em;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.06);
+}
+pre code { padding: 0; background: none; }
+
+kbd {
+  display: inline-block;
+  padding: 0.05em 0.45em;
+  border: 1px solid currentColor;
+  border-bottom-width: 3px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+::selection { background: var(--gold); color: var(--ink); }
+
+/* Visible focus for keyboard users on every page */
+:focus-visible {
+  outline: 3px solid #1D4ED8;
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* a section that stretches edge to edge while its content stays in the wrap */
+.bleed {
+  margin-inline: calc(50% - 50vw);
+  padding-inline: calc(50vw - 50%);
+}
+
+.prose { max-width: 42rem; }
+
+.lead {
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  color: var(--ink-soft);
+  max-width: 40rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.tagline::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.4rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, color 0.2s;
+}
+.button:hover { transform: translateY(-2px); background: var(--green); border-color: var(--green); }
+.button.ghost { background: transparent; color: inherit; border-color: currentColor; }
+.button.ghost:hover { background: #fff; color: var(--ink); border-color: #fff; }
+.button.gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.button.gold:hover { background: #fff; border-color: #fff; }
+
+/* ---------- 3. Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 100;
+  padding: 0.7rem 1.1rem;
+  border-radius: 10px;
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 700;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- 4. Header and navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(244, 242, 236, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 2rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.logo span {
+  color: var(--ink);
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 3px;
+}
+.logo i {
+  display: inline-block;
+  margin: 0 0.15rem;
+  color: var(--ink-soft);
+  font-style: normal;
+  transition: transform 0.3s;
+}
+.logo:hover i { transform: rotate(20deg); }
+.logo b {
+  padding: 0 0.35rem;
+  border-radius: 6px;
+  background: var(--green);
+  color: #fff;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+.site-nav a {
+  display: block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.93rem;
+  font-weight: 700;
+  transition: background-color 0.2s, color 0.2s;
+}
+.site-nav a:hover { background: rgba(0, 0, 0, 0.06); color: var(--ink); }
+.site-nav a[aria-current="page"] {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ---------- 5. Page intro (topic pages) ---------- */
+.page-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: end;
+  padding: 3.5rem 0 2rem;
+}
+.page-intro h1 { font-size: clamp(2.8rem, 8vw, 5.5rem); margin-bottom: 1rem; }
+
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.6rem 1.6rem 1.4rem;
+  border-radius: 28px;
+  background: var(--accent);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  transform: rotate(-1.5deg);
+}
+.stat-card::after {          /* big decorative ring */
+  content: "";
+  position: absolute;
+  right: -3rem;
+  top: -3rem;
+  width: 9rem;
+  height: 9rem;
+  border: 1.5rem solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+}
+.stat-card p { margin: 0; font-size: 1.05rem; font-weight: 700; position: relative; }
+.stat-card strong {
+  display: block;
+  font-family: var(--font-head);
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.4rem;
+}
+.stat-card small { display: block; margin-top: 0.8rem; font-size: 0.82rem; opacity: 0.8; position: relative; }
+
+/* ---------- 6. Content sections ---------- */
+.section { padding-block: 3rem; border-top: 1px solid var(--line); }
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.6rem;
+  box-shadow: var(--shadow);
+}
+.card p:last-child, .card ul:last-child { margin-bottom: 0; }
+.card.accent-top { border-top: 6px solid var(--accent); }
+
+.fact-list { margin: 0; }
+.fact-list dt { font-family: var(--font-head); font-weight: 800; font-size: 2rem; line-height: 1.1; color: var(--green); }
+.fact-list dd { margin: 0 0 1.1rem; color: var(--ink-soft); }
+
+.tips { padding: 0; margin: 0; list-style: none; }
+.tips li { position: relative; padding-left: 1.8rem; margin-bottom: 0.7rem; }
+.tips li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  display: grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+pre {
+  margin: 1rem 0 0;
+  padding: 1.25rem 1.4rem;
+  overflow-x: auto;
+  border-radius: 16px;
+  background: var(--night);
+  color: #F1F1EE;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- 7. The Barrier / Fixed switch ---------- */
+.demo { padding: 1rem 0 3rem; }
+.demo-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.demo-head p { margin: 0; color: var(--ink-soft); max-width: 34rem; }
+
+/* the real checkbox is hidden visually but still works with keyboard and screen readers */
+.switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.25rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.1rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.switch:hover { transform: translate(-1px, -1px); box-shadow: 6px 6px 0 var(--ink); }
+.switch:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.switch-track {
+  position: relative;
+  width: 4.5rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  background: var(--red);
+  border: 2px solid var(--ink);
+  transition: background-color 0.3s;
+}
+.switch-track::after {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  left: 0.25rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--ink);
+  transition: transform 0.35s cubic-bezier(0.5, 1.6, 0.4, 0.8);
+}
+.switch-word { transition: opacity 0.3s; }
+.switch-word.fixed-word { opacity: 0.4; }
+.switch-input:checked + .switch .switch-track { background: var(--green); }
+.switch-input:checked + .switch .switch-track::after { transform: translateX(2rem); }
+.switch-input:checked + .switch .barrier-word { opacity: 0.4; }
+.switch-input:checked + .switch .fixed-word { opacity: 1; }
+.switch-input:focus-visible + .switch { outline: 3px solid #1D4ED8; outline-offset: 4px; }
+
+/* ---------- 8. The stage (changes colour with the switch) ---------- */
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255, 122, 107, 0.22), transparent 45%),
+    radial-gradient(circle at 100% 100%, rgba(179, 38, 30, 0.25), transparent 50%),
+    var(--charcoal);
+  color: #EDEDEA;
+  transition: background-color 0.5s, color 0.5s;
+}
+/* a mode label across the top of the stage */
+.stage::before {
+  content: "Barrier mode · this is what many people meet";
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: var(--coral);
+  color: var(--night);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.switch-input:checked ~ .stage {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255, 255, 255, 0.55), transparent 45%),
+    radial-gradient(circle at 100% 100%, rgba(14, 107, 71, 0.25), transparent 50%),
+    var(--gold);
+  color: var(--ink);
+}
+.switch-input:checked ~ .stage::before {
+  content: "Fixed mode · same page, nobody left out";
+  background: var(--green);
+  color: #fff;
+}
+
+/* show / hide the two versions */
+.stage .when-fixed { display: none; }
+.switch-input:checked ~ .stage .when-fixed { display: revert; }
+.switch-input:checked ~ .stage .when-barrier { display: none; }
+
+/* notes beside the mock site */
+.notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; align-content: start; }
+.notes li {
+  display: flex;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+}
+.switch-input:checked ~ .stage .notes li { background: rgba(255, 255, 255, 0.6); border-color: rgba(0, 0, 0, 0.06); }
+.notes p { margin: 0; }
+.notes strong { display: block; font-family: var(--font-head); font-size: 1.05rem; margin-bottom: 0.15rem; }
+.num {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--coral);
+  color: var(--night);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.switch-input:checked ~ .stage .num { background: var(--green); color: #fff; }
+.stage-label { font-size: 0.85rem; font-weight: 700; margin: 0 0 0.35rem; opacity: 0.85; }
+
+/* ---------- 9. The fake website inside the stage ---------- */
+.mock {
+  align-self: start;
+  background: #fff;
+  color: #1B1B1B;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.65);
+}
+.mock-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  background: #ECEDEF;
+  color: #555;
+  font-size: 0.78rem;
+}
+.mock-bar > span:last-child {
+  flex: 1;
+  padding: 0.1rem 0.7rem;
+  border-radius: 999px;
+  background: #fff;
+}
+.dots { display: flex; gap: 0.35rem; }
+.dots i { width: 0.65rem; height: 0.65rem; border-radius: 50%; background: #FF5F57; }
+.dots i:nth-child(2) { background: #FEBC2E; }
+.dots i:nth-child(3) { background: #28C840; }
+.mock-body { padding: 1.4rem; }
+.mock-title { font-family: var(--font-news); font-size: 1.35rem; line-height: 1.25; letter-spacing: 0; margin: 0 0 0.6rem; }
+
+/* ---------- 10. Hearing page ---------- */
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 3px solid #1B1B1B;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.9rem;
+  font-family: var(--font-news);
+}
+.masthead strong { font-size: 1.3rem; }
+.masthead small { font-size: 0.75rem; color: #555; font-family: var(--font-body); }
+.news-text { font-family: var(--font-news); font-size: 0.98rem; }
+
+/* the audio-only alert (barrier version) */
+.sound-alert {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  background: #F1F1F1;
+}
+.sound-alert p { margin: 0 0 0.4rem; font-size: 0.88rem; font-weight: 700; }
+.sound-alert audio { width: 100%; height: 2.5rem; }
+
+.text-alert {
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.9rem;
+  border-left: 6px solid #C99500;
+  border-radius: 8px;
+  background: #FFF1C2;
+  font-size: 0.92rem;
+}
+
+/* the real video player */
+.player {
+  position: relative;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+.player video { width: 100%; aspect-ratio: 16 / 9; background: #0B2545; }
+.cc-state { margin: 0 0 0.5rem; font-size: 0.82rem; font-weight: 700; }
+.cc-state span { display: inline-block; padding: 0.1rem 0.6rem; border-radius: 999px; background: #F3D3CF; color: #7A1B14; }
+.cc-state .when-fixed { background: #D3EEDF; color: #0B5236; }
+
+/* captions come from the .vtt file through <track>. Style them: */
+video::cue {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+/* Barrier mode: the captions are switched off, so make them invisible.
+   (On a real site the barrier would simply be a missing caption file.) */
+.switch-input:not(:checked) ~ .stage video::cue {
+  color: transparent;
+  background: transparent;
+  text-shadow: none;
+}
+
+.mock details { border: 1px solid #D0D0D0; border-radius: 10px; padding: 0.55rem 0.8rem; margin-bottom: 1rem; font-size: 0.9rem; }
+.mock summary { cursor: pointer; font-weight: 700; }
+.mock details ol { margin: 0.6rem 0 0.2rem; padding-left: 1.2rem; }
+.mock details li span { color: #666; font-variant-numeric: tabular-nums; margin-right: 0.4rem; }
+.mock-foot { border-top: 1px solid #DDD; padding-top: 0.75rem; font-size: 0.88rem; margin: 0; }
+
+/* ---------- 11. Low vision page ---------- */
+.shop { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+.fabric {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 22px, rgba(0, 0, 0, 0.25) 22px 26px),
+    repeating-linear-gradient(90deg, #F5C33B 0 14px, #0E6B47 14px 22px, #B3261E 22px 30px, #1B1B1B 30px 34px),
+    #F5C33B;
+}
+.fabric-caption { font-size: 0.8rem; color: #333; margin: 0.4rem 0 0; }
+.shop .lv { font-size: 0.7rem; color: #BDBDBD; }
+.shop .lv-title { font-size: 0.85rem; color: #C4C4C4; font-weight: 400; margin: 0 0 0.3rem; letter-spacing: 0; }
+.shop .lv-price { color: #A8D8BC; font-size: 0.8rem; margin: 0.3rem 0; }
+.shop-btn {
+  padding: 0.15rem 0.4rem;
+  border: 0;
+  border-radius: 4px;
+  background: #E9F5EE;
+  color: #BFE0CB;
+  font-size: 0.7rem;
+}
+.switch-input:checked ~ .stage .shop .lv { font-size: 0.98rem; color: #222; }
+.switch-input:checked ~ .stage .shop .lv-title { font-size: 1.25rem; color: #111; font-weight: 700; }
+.switch-input:checked ~ .stage .shop .lv-price { font-size: 1.15rem; color: var(--green); font-weight: 700; }
+.switch-input:checked ~ .stage .shop-btn {
+  padding: 0.75rem 1.1rem;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ---------- 12. Colour blindness page ---------- */
+.legend { display: flex; gap: 1rem; font-size: 0.88rem; margin: 0 0 0.75rem; padding: 0; list-style: none; }
+.swatch { display: inline-block; width: 0.85rem; height: 0.85rem; border-radius: 3px; margin-right: 0.3rem; vertical-align: -1px; }
+.seats {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.seat {
+  min-height: 3.2rem;
+  padding: 0.35rem;
+  border-radius: 10px 10px 6px 6px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.25;
+}
+.seat.taken, .swatch.taken { background-color: #D33A2C; }
+.seat.free, .swatch.free { background-color: #2E9E4F; }
+/* rough simulation of red-green colour blindness: both colours turn a similar olive */
+.sim .seat.taken { background-color: #8E8550; }
+.sim .seat.free { background-color: #9E9257; }
+.switch-input:checked ~ .stage .seat.taken {
+  background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.35) 0 4px, transparent 4px 9px);
+}
+.switch-input:checked ~ .stage .seat.free { outline: 3px solid #fff; outline-offset: -5px; }
+.seat small { display: block; font-weight: 400; }
+
+/* ---------- 13. Dyslexia page ---------- */
+.wall {
+  font-family: "Times New Roman", serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.25;
+  text-align: justify;
+  margin: 0;
+}
+.wall-head { font-family: "Times New Roman", serif; text-transform: uppercase; font-size: 1rem; letter-spacing: 0; margin: 0 0 0.4rem; }
+.clear { font-size: 1rem; line-height: 1.75; letter-spacing: 0.02em; word-spacing: 0.08em; }
+.clear h3 { font-family: var(--font-body); font-size: 1.2rem; letter-spacing: 0; }
+.clear ol { padding-left: 1.3rem; margin: 0 0 1rem; }
+
+/* ---------- 14. Motor page ---------- */
+.tiny-form label { font-size: 0.7rem; margin-right: 0.15rem; }
+.tiny-form input[type="tel"] { width: 7rem; padding: 0.1rem 0.2rem; font-size: 0.7rem; border: 1px solid #CCC; }
+.tiny-form input:focus, .tiny-form button:focus { outline: none; }
+.tiny-btn { padding: 0 0.3rem; font-size: 0.7rem; }
+.cramped-links { font-size: 0.7rem; margin: 0.6rem 0 0; }
+.cramped-links a { margin: 0 0.05rem; }
+
+.big-form fieldset { border: 1px solid #CCC; border-radius: 12px; padding: 0.6rem 0.9rem 0.8rem; margin: 0 0 1rem; }
+.big-form legend { font-weight: 700; padding: 0 0.3rem; }
+.big-form .choice { display: flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; }
+.big-form input[type="radio"] { width: 1.3rem; height: 1.3rem; accent-color: var(--green); }
+.big-form .field-label { display: block; font-weight: 700; margin-bottom: 0.3rem; }
+.big-form .hint { display: block; font-size: 0.85rem; color: #555; margin-bottom: 0.4rem; }
+.big-form input[type="tel"] { width: 100%; padding: 0.7rem; font-size: 1rem; border: 2px solid #777; border-radius: 10px; }
+.big-btn {
+  margin-top: 1rem;
+  width: 100%;
+  min-height: 3rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.big-form :focus-visible { outline: 3px solid #1D4ED8; outline-offset: 3px; }
+.spaced-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.spaced-links a { display: inline-block; padding: 0.5rem 0; }
+
+/* ---------- 15. Home page ---------- */
+
+/* 15a. The dark hero, with a headline that is itself a barrier */
+.hero {
+  position: relative;
+  padding-top: clamp(3.5rem, 9vw, 7rem);
+  padding-bottom: clamp(3rem, 7vw, 5.5rem);
+  background:
+    radial-gradient(ellipse at 10% 10%, rgba(245, 195, 59, 0.28), transparent 45%),
+    radial-gradient(ellipse at 90% 20%, rgba(179, 38, 30, 0.35), transparent 45%),
+    radial-gradient(ellipse at 60% 110%, rgba(14, 107, 71, 0.55), transparent 55%),
+    var(--night);
+  color: #F4F2EC;
+}
+.hero .tagline { background: rgba(255, 255, 255, 0.1); }
+.hero h1 {
+  font-size: clamp(2.6rem, 8.2vw, 6.4rem);
+  max-width: 14ch;
+  margin-bottom: 1.5rem;
+}
+.hero .lead { color: #C9CCD3; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem; }
+
+/* each broken word shows a different barrier */
+.bw { display: inline-block; transition: filter 0.6s, color 0.6s, font-size 0.6s, text-shadow 0.6s, transform 0.6s, letter-spacing 0.6s; }
+.bw-blur  { filter: blur(5px); }                                   /* low vision */
+.bw-faint { color: rgba(255, 255, 255, 0.13); }                     /* low contrast */
+.bw-ghost {                                                          /* doubled, shaky text */
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0.09em 0.02em 0 rgba(255, 255, 255, 0.35), -0.07em -0.03em 0 rgba(255, 255, 255, 0.25);
+  animation: shake 0.35s steps(2) infinite;
+}
+.bw-tiny  { font-size: 0.32em; letter-spacing: 0; vertical-align: middle; color: #8B8F98; }
+@keyframes shake { 50% { transform: translate(2px, -1px) rotate(-1deg); } }
+
+.hero .switch {
+  margin-top: 0;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 4px 4px 0 var(--gold);
+}
+.hero .switch-track, .hero .switch-track::after { border-color: #fff; }
+#hero-fix:checked ~ h1 .bw {
+  filter: none;
+  color: inherit;
+  font-size: 1em;
+  text-shadow: none;
+  animation: none;
+  transform: none;
+}
+#hero-fix:checked ~ h1 .bw-tiny { color: var(--gold); }
+.hero-hint { margin-top: 1rem; font-size: 0.95rem; color: #9EA2AB; }
+.hero-hint .when-fixed { display: none; }
+#hero-fix:checked ~ .hero-hint .when-fixed { display: inline; color: var(--mint); }
+#hero-fix:checked ~ .hero-hint .when-barrier { display: none; }
+
+/* 15b. A scrolling band of facts */
+.ticker {
+  overflow: hidden;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  background: var(--gold);
+  border-block: 2px solid var(--ink);
+}
+.ticker-track { display: flex; width: max-content; animation: ticker 40s linear infinite; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker ul { display: flex; gap: 3rem; margin: 0; padding: 0 3rem 0 0; list-style: none; }
+.ticker li { font-family: var(--font-head); font-weight: 800; font-size: 1.15rem; white-space: nowrap; }
+.ticker li::before { content: "✺"; margin-right: 1rem; color: var(--red); }
+@keyframes ticker { to { transform: translateX(-50%); } }
+
+/* 15c. Topic cards */
+.section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.5rem; }
+.section-head p { margin: 0; color: var(--ink-soft); max-width: 30rem; }
+.topic-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.1rem;
+}
+.topic-grid a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 24px;
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.topic-grid a::before {    /* colour block that grows on hover */
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 0.6rem;
+  background: var(--accent);
+  transition: height 0.35s;
+  z-index: 0;
+}
+.topic-grid a > * { position: relative; z-index: 1; }
+.topic-grid a:hover, .topic-grid a:focus-visible { transform: translateY(-4px); box-shadow: 6px 6px 0 var(--ink); }
+.topic-grid a:hover::before, .topic-grid a:focus-visible::before { height: 100%; }
+.topic-grid .card-num { font-family: var(--font-head); font-weight: 800; font-size: 0.95rem; color: var(--ink-soft); }
+.topic-grid .icon {
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  margin: 0.8rem 0 1rem;
+  border-radius: 50%;
+  background: var(--accent);
+  font-size: 1.6rem;
+}
+.topic-grid h3 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+.topic-grid p { margin: 0 0 1.2rem; color: var(--ink-soft); font-size: 0.97rem; flex: 1; }
+.topic-grid a:hover p { color: var(--ink); }
+.topic-grid .go { font-weight: 700; }
+.topic-grid .go::after { content: " →"; display: inline-block; transition: transform 0.25s; }
+.topic-grid a:hover .go::after { transform: translateX(6px); }
+
+/* 15d. "Try it right now" challenges */
+.challenges {
+  background: var(--ink);
+  color: #F4F2EC;
+}
+.challenges .section-head p { color: #B8BCC5; }
+.challenge-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; counter-reset: ch; }
+.challenge-grid li {
+  padding: 1.5rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  counter-increment: ch;
+}
+.challenge-grid li::before {
+  content: "Challenge " counter(ch);
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.challenge-grid h3 { font-size: 1.4rem; }
+.challenge-grid p { margin: 0; color: #C9CCD3; }
+.challenge-grid kbd { color: #fff; }
+
+.steps { padding-left: 1.3rem; }
+.steps li { margin-bottom: 0.7rem; }
+.steps li::marker { font-family: var(--font-head); font-weight: 800; color: var(--green); }
+
+/* ---------- 16. Checklist and About forms ---------- */
+.check-group {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 1rem 1.3rem 1.2rem;
+  margin: 0 0 1rem;
+  box-shadow: var(--shadow);
+}
+.check-group legend {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 0.15rem 0.8rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+}
+.check-item { display: flex; gap: 0.7rem; align-items: flex-start; padding: 0.5rem 0; cursor: pointer; }
+.check-item input { width: 1.3rem; height: 1.3rem; margin-top: 0.15rem; flex: none; accent-color: var(--green); }
+.check-item input:checked + span { text-decoration: line-through; color: var(--ink-soft); }
+
+.glossary dt { font-weight: 700; margin-top: 0.9rem; }
+.glossary dd { margin: 0.2rem 0 0; color: var(--ink-soft); }
+
+.form-field { margin-bottom: 1.1rem; }
+.form-field label, .form-field .field-label { display: block; font-weight: 700; margin-bottom: 0.3rem; }
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 2px solid #8A8E96;
+  border-radius: 12px;
+  font: inherit;
+  background: #fff;
+}
+.form-field textarea { min-height: 7rem; }
+.form-field input:user-invalid { border-color: var(--red); }
+.feedback fieldset { border: 1px solid var(--line); border-radius: 14px; margin: 0 0 1.1rem; padding: 0.6rem 1rem 0.8rem; }
+.feedback legend { font-weight: 700; padding: 0 0.3rem; }
+.feedback .choice { display: flex; align-items: center; gap: 0.6rem; min-height: 2.5rem; }
+.feedback input[type="radio"], .feedback input[type="checkbox"] { width: 1.2rem; height: 1.2rem; accent-color: var(--green); }
+
+/* ---------- 17. Previous / next and footer ---------- */
+.pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--line);
+}
+.pager a {
+  display: block;
+  padding: 1.1rem 1.4rem;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: var(--surface);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.pager a:hover { transform: translateY(-3px); box-shadow: 5px 5px 0 var(--ink); }
+.pager small { display: block; font-family: var(--font-body); font-weight: 400; font-size: 0.85rem; color: var(--ink-soft); }
+.pager .prev small::before { content: "← "; }
+.pager .next { grid-column: 2; text-align: right; }
+.pager .next small::after { content: " →"; }
+
+.site-footer {
+  padding: 3.5rem 0 2rem;
+  background: var(--night);
+  color: #C9CCD3;
+  font-size: 0.95rem;
+}
+.footer-big {
+  margin: 0 0 2rem;
+  max-width: 18ch;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+.footer-big em { font-style: normal; color: var(--gold); }
+.site-footer p { margin: 0 0 0.4rem; }
+.site-footer a { color: var(--gold); }
+
+/* ---------- 18. Gentle reveal on scroll (only in browsers that support it) ---------- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+    @keyframes rise { from { opacity: 0; transform: translateY(2.5rem); } }
+  }
+}
+
+/* ---------- 19. Responsive design ---------- */
+@media (width < 56em) {
+  .stage, .two-col, .shop, .page-intro, .challenge-grid { grid-template-columns: 1fr; }
+  .shop .fabric { max-width: 9rem; }
+  .stat-card { transform: none; }
+  .site-nav ul { gap: 0.1rem; }
+  .site-nav a { padding: 0.35rem 0.6rem; font-size: 0.88rem; }
+}
+@media (width < 36em) {
+  .site-header { position: static; }
+  .pager { grid-template-columns: 1fr; }
+  .pager .next { grid-column: 1; }
+}
+
+/* ---------- 20. Respect people who prefer less motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .ticker-track { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker ul[aria-hidden="true"] { display: none; }
+}
+
+/* the home page switch sits after the headline, so it uses ~ instead of + */
+#hero-fix:checked ~ .switch .switch-track { background: var(--green); }
+#hero-fix:checked ~ .switch .switch-track::after { transform: translateX(2rem); }
+#hero-fix:checked ~ .switch .barrier-word { opacity: 0.4; }
+#hero-fix:checked ~ .switch .fixed-word { opacity: 1; }
+#hero-fix:focus-visible ~ .switch { outline: 3px solid #fff; outline-offset: 4px; }

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checklist | Barrier/Fix</title>
+  <meta name="description" content="A checklist of every accessibility fix from Barrier/Fix, to tick off while testing a website.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-checklist">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html"><span>Barrier</span><i aria-hidden="true">/</i><b>Fix</b></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hearing.html">Hearing</a></li>
+        <li><a href="low-vision.html">Low vision</a></li>
+        <li><a href="colour-blindness.html">Colour blindness</a></li>
+        <li><a href="dyslexia.html">Dyslexia</a></li>
+        <li><a href="motor.html">Motor</a></li>
+        <li><a href="checklist.html" aria-current="page">Checklist</a></li>
+        <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="page-intro" aria-labelledby="title">
+      <div>
+        <span class="tagline">Use it while you test</span>
+        <h1 id="title">Checklist</h1>
+        <p class="lead">Every fix from this site in one place. Tick each box as you check your own pages. The ticks reset when you reload.</p>
+      </div>
+      <aside class="stat-card" aria-label="Key fact">
+        <p><strong>20 checks</strong> that catch most of the barriers on this site.</p>
+        <small>Based on WCAG</small>
+      </aside>
+    </section>
+
+    <div class="two-col">
+      <form action="#" aria-label="Accessibility checklist">
+      <fieldset class="check-group">
+        <legend>Structure (every page)</legend>
+        <label class="check-item"><input type="checkbox" name="check" value="c1"><span>The page has one <code>&lt;h1&gt;</code> and headings in order.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c2"><span>It uses <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> and <code>&lt;footer&gt;</code>.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c3"><span>There is a skip link to the main content.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c4"><span>The <code>&lt;html&gt;</code> tag has a <code>lang</code> attribute.</span></label>
+      </fieldset>
+      <fieldset class="check-group">
+        <legend>Hearing</legend>
+        <label class="check-item"><input type="checkbox" name="check" value="c5"><span>Every video has accurate captions.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c6"><span>Audio and video have a written transcript.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c7"><span>Nothing important is shared only through sound.</span></label>
+      </fieldset>
+      <fieldset class="check-group">
+        <legend>Low vision</legend>
+        <label class="check-item"><input type="checkbox" name="check" value="c8"><span>Text contrast is at least 4.5 to 1.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c9"><span>Text sizes use <code>rem</code> and the page works at 200% zoom.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c10"><span>Meaningful images have alt text; decorative ones have <code>alt=&quot;&quot;</code>.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c11"><span>Links and buttons make sense on their own.</span></label>
+      </fieldset>
+      <fieldset class="check-group">
+        <legend>Colour</legend>
+        <label class="check-item"><input type="checkbox" name="check" value="c12"><span>Colour is never the only way to show meaning.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c13"><span>Instructions don't rely on colour names.</span></label>
+      </fieldset>
+      <fieldset class="check-group">
+        <legend>Reading</legend>
+        <label class="check-item"><input type="checkbox" name="check" value="c14"><span>Paragraphs are short and text is left-aligned.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c15"><span>Steps and items use proper lists.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c16"><span>Line height is at least 1.5.</span></label>
+      </fieldset>
+      <fieldset class="check-group">
+        <legend>Motor and keyboard</legend>
+        <label class="check-item"><input type="checkbox" name="check" value="c17"><span>Everything works with only the keyboard.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c18"><span>The focus outline is always visible.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c19"><span>Buttons and links are at least 44 pixels tall.</span></label>
+        <label class="check-item"><input type="checkbox" name="check" value="c20"><span>Every form control has a <code>&lt;label&gt;</code>.</span></label>
+      </fieldset>
+      </form>
+
+      <div>
+        <div class="card">
+          <h2>How to test</h2>
+          <ol class="steps">
+            <li><strong>Keyboard:</strong> unplug your mouse and press <kbd>Tab</kbd> through every page.</li>
+            <li><strong>Zoom:</strong> zoom your browser to 200% and check nothing is cut off.</li>
+            <li><strong>Automatic check:</strong> run the page through WAVE or Lighthouse.</li>
+            <li><strong>Screen reader:</strong> listen to one page with NVDA (Windows) or VoiceOver (Mac and iPhone).</li>
+            <li><strong>Real people:</strong> ask someone else to use the site and watch where they get stuck.</li>
+          </ol>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h2>Words to know</h2>
+          <dl class="glossary">
+            <dt>Alt text</dt>
+            <dd>A written description of an image, added with the <code>alt</code> attribute.</dd>
+            <dt>Captions</dt>
+            <dd>On-screen text of speech <em>and</em> important sounds in a video.</dd>
+            <dt>Contrast ratio</dt>
+            <dd>How different the text colour is from the background, from 1:1 to 21:1.</dd>
+            <dt>Screen reader</dt>
+            <dd>Software that reads a page aloud or sends it to a braille display.</dd>
+            <dt>WCAG</dt>
+            <dd>The Web Content Accessibility Guidelines, the main international standard for accessible websites.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <nav class="pager" aria-label="Previous and next page">
+      <a class="prev" href="motor.html"><small>Previous</small>Motor</a>
+      <a class="next" href="about.html"><small>Next</small>About</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-big">If one person can't get in, the website <em>isn't finished.</em></p>
+      <p><strong>Barrier/Fix</strong> is a student project about web accessibility, built with HTML and CSS only.</p>
+      <p>Made by Ewurabena Pinkra Amissah-Arthur &middot; 2026 &middot; <a href="about.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+</body>
+</html>

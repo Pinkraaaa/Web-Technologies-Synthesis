@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dyslexia | Barrier/Fix</title>
+  <meta name="description" content="How dense, justified, italic text makes reading hard for people with dyslexia, and how layout and spacing fix it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-dyslexia">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html"><span>Barrier</span><i aria-hidden="true">/</i><b>Fix</b></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hearing.html">Hearing</a></li>
+        <li><a href="low-vision.html">Low vision</a></li>
+        <li><a href="colour-blindness.html">Colour blindness</a></li>
+        <li><a href="dyslexia.html" aria-current="page">Dyslexia</a></li>
+        <li><a href="motor.html">Motor</a></li>
+        <li><a href="checklist.html">Checklist</a></li>
+        <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="page-intro" aria-labelledby="title">
+      <div>
+        <span class="tagline">Reading and learning differences</span>
+        <h1 id="title">Dyslexia</h1>
+        <p class="lead">Long blocks of text, uneven spacing and fancy styling make words harder to track, especially for people with dyslexia. Here is a made-up campus notice.</p>
+      </div>
+      <aside class="stat-card" aria-label="Key fact">
+        <p><strong>Up to 1 in 10</strong> people show signs of dyslexia. Estimates vary.</p>
+        <small>British Dyslexia Association</small>
+      </aside>
+    </section>
+
+    <section class="demo" aria-labelledby="demo-title">
+      <div class="demo-head">
+        <h2 id="demo-title">Try it</h2>
+        <p>Try to find the date and the three things to bring, then switch on the fixes.</p>
+      </div>
+      <input class="switch-input" type="checkbox" id="fix" role="switch">
+      <label class="switch" for="fix">
+        <span class="switch-word barrier-word" aria-hidden="true">Barrier</span>
+        <span class="switch-track" aria-hidden="true"></span>
+        <span class="switch-word fixed-word" aria-hidden="true">Fixed</span>
+        <span class="visually-hidden">Show the accessible version of the campus notice</span>
+      </label>
+      <div class="stage">
+        <article class="mock" aria-label="Example campus notice">
+          <div class="mock-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span>campuslife.example/notices</span></div>
+          <div class="mock-body">
+            <div class="when-barrier">
+              <h3 class="wall-head">IMPORTANT INFORMATION REGARDING THE UPCOMING ORIENTATION PROGRAMME FOR ALL INCOMING FIRST YEAR STUDENTS</h3>
+              <p class="wall">All incoming first year students are hereby informed that the orientation programme will commence on Monday the twelfth of October at eight o'clock in the morning at the main auditorium and attendance is compulsory for all students without exception, and students are required to bring along their admission letter, a valid national identification card such as the Ghana Card and two recent passport photographs which will be used to process student identification cards, and failure to present these documents may result in delays in the registration process which could affect access to accommodation and course registration, therefore all students are strongly encouraged to arrive early and to direct any enquiries to the Campus Life Office.</p>
+            </div>
+            <div class="when-fixed clear">
+              <h3>Orientation for first-year students</h3>
+              <p><strong>When:</strong> Monday 12 October, 8:00 am<br><strong>Where:</strong> Main auditorium</p>
+              <p>Orientation is compulsory. Please bring:</p>
+              <ol>
+                <li>Your admission letter</li>
+                <li>Your Ghana Card</li>
+                <li>Two passport photos</li>
+              </ol>
+              <p>Without these, your student ID, room and course registration may be delayed. Questions? Ask the Campus Life Office.</p>
+            </div>
+          </div>
+        </article>
+        <ol class="notes">
+          <li><span class="num" aria-hidden="true">1</span>
+            <p class="when-barrier"><strong>One long wall of text.</strong> The key details are buried in a single 100-word sentence.</p>
+            <p class="when-fixed"><strong>Short chunks.</strong> A heading, short paragraphs and a numbered list.</p></li>
+          <li><span class="num" aria-hidden="true">2</span>
+            <p class="when-barrier"><strong>Justified and italic.</strong> Uneven gaps between words and slanted letters are hard to track.</p>
+            <p class="when-fixed"><strong>Left-aligned, regular text.</strong> Even spacing and upright letters.</p></li>
+          <li><span class="num" aria-hidden="true">3</span>
+            <p class="when-barrier"><strong>Shouty capitals and tight lines.</strong> Capitals remove word shapes, and lines crowd together.</p>
+            <p class="when-fixed"><strong>Sentence case and room to breathe.</strong> Wider line height and a little extra letter spacing.</p></li>
+          <li><span class="num" aria-hidden="true">4</span>
+            <p class="when-barrier"><strong>Important facts hidden.</strong> The date and the items to bring are hard to find.</p>
+            <p class="when-fixed"><strong>Key facts stand out.</strong> Dates are bold and the items are a list.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section two-col reveal" aria-labelledby="who">
+      <div class="prose">
+        <h2 id="who">Who this affects</h2>
+        <p>Dyslexia is a common learning difference that affects reading and spelling. It has nothing to do with intelligence. Clear layout also helps people with ADHD, people reading in a second language, and anyone skimming on a phone.</p>
+        <p>Using real <strong>headings</strong> and <strong>lists</strong> in your HTML also helps screen reader users jump straight to the part they need.</p>
+      </div>
+      <div class="card">
+        <h2>Tips for your own pages</h2>
+        <ul class="tips">
+          <li>Keep paragraphs short and use headings to break up text.</li>
+          <li>Use lists for steps and items.</li>
+          <li>Align text to the left. Avoid <code>text-align: justify</code>.</li>
+          <li>Use a line height around 1.5 or more.</li>
+          <li>Avoid long stretches of italics or ALL CAPS.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="code">
+      <h2 id="code">The code behind the fix</h2>
+<pre><code>.notice {
+  text-align: left;      /* not justify */
+  font-style: normal;    /* not italic */
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  max-width: 40rem;      /* shorter lines are easier to follow */
+}</code></pre>
+    </section>
+
+    <nav class="pager" aria-label="Previous and next page">
+      <a class="prev" href="colour-blindness.html"><small>Previous</small>Colour blindness</a>
+      <a class="next" href="motor.html"><small>Next</small>Motor</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-big">If one person can't get in, the website <em>isn't finished.</em></p>
+      <p><strong>Barrier/Fix</strong> is a student project about web accessibility, built with HTML and CSS only.</p>
+      <p>Made by Ewurabena Pinkra Amissah-Arthur &middot; 2026 &middot; <a href="about.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+</body>
+</html>

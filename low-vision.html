@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Low vision | Barrier/Fix</title>
+  <meta name="description" content="How faint, tiny text and missing image descriptions shut out people with low vision, and how to fix them.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-vision">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html"><span>Barrier</span><i aria-hidden="true">/</i><b>Fix</b></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hearing.html">Hearing</a></li>
+        <li><a href="low-vision.html" aria-current="page">Low vision</a></li>
+        <li><a href="colour-blindness.html">Colour blindness</a></li>
+        <li><a href="dyslexia.html">Dyslexia</a></li>
+        <li><a href="motor.html">Motor</a></li>
+        <li><a href="checklist.html">Checklist</a></li>
+        <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="page-intro" aria-labelledby="title">
+      <div>
+        <span class="tagline">Low vision and blindness</span>
+        <h1 id="title">Low vision</h1>
+        <p class="lead">Light grey text, tiny fonts and pictures with no description make a page hard or impossible to use for people with low vision, and for anyone using a screen reader. Here is a made-up online fabric shop.</p>
+      </div>
+      <aside class="stat-card" aria-label="Key fact">
+        <p><strong>2.2 billion</strong> people have a near or distance vision impairment.</p>
+        <small>World Health Organization</small>
+      </aside>
+    </section>
+
+    <section class="demo" aria-labelledby="demo-title">
+      <div class="demo-head">
+        <h2 id="demo-title">Try it</h2>
+        <p>Try reading the product details, then switch on the fixes.</p>
+      </div>
+      <input class="switch-input" type="checkbox" id="fix" role="switch">
+      <label class="switch" for="fix">
+        <span class="switch-word barrier-word" aria-hidden="true">Barrier</span>
+        <span class="switch-track" aria-hidden="true"></span>
+        <span class="switch-word fixed-word" aria-hidden="true">Fixed</span>
+        <span class="visually-hidden">Show the accessible version of the shop page</span>
+      </label>
+      <div class="stage">
+        <article class="mock" aria-label="Example shop page from Makola Fabrics">
+          <div class="mock-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span>makolafabrics.example/kente</span></div>
+          <div class="mock-body">
+            <div class="shop">
+              <div>
+                <div class="fabric when-barrier" role="img"></div>
+                <div class="when-fixed">
+                  <div class="fabric" role="img" aria-label="Hand-woven kente cloth with gold, green, red and black stripes"></div>
+                  <p class="fabric-caption">Image: hand-woven kente cloth with gold, green, red and black stripes.</p>
+                </div>
+              </div>
+              <div>
+                <h3 class="lv-title">Kente cloth, 6 yards</h3>
+                <p class="lv">Hand-woven in Bonwire. Cotton and rayon blend. Ships within Accra in two days.</p>
+                <p class="lv-price">GH₵ 850.00</p>
+                <button class="shop-btn" type="button"><span class="when-barrier">Add</span><span class="when-fixed">Add kente cloth to basket</span></button>
+                <p class="lv" style="margin-top:.8rem"><a href="#main" class="when-barrier">Click here</a><a href="#main" class="when-fixed">See all kente cloth (24 items)</a></p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <ol class="notes">
+          <li><span class="num" aria-hidden="true">1</span>
+            <p class="when-barrier"><strong>The contrast is too low.</strong> Light grey on white is a struggle for many eyes.</p>
+            <p class="when-fixed"><strong>Strong contrast.</strong> Dark text on white passes the 4.5 to 1 contrast rule.</p></li>
+          <li><span class="num" aria-hidden="true">2</span>
+            <p class="when-barrier"><strong>The text is tiny.</strong> Small fixed sizes are tiring and blur when zoomed.</p>
+            <p class="when-fixed"><strong>Comfortable text size.</strong> Text uses rem units, so it grows with the reader's settings.</p></li>
+          <li><span class="num" aria-hidden="true">3</span>
+            <p class="when-barrier"><strong>The photo has no description.</strong> A screen reader just says &quot;image&quot;.</p>
+            <p class="when-fixed"><strong>The photo is described.</strong> Alt text tells everyone what the cloth looks like.</p></li>
+          <li><span class="num" aria-hidden="true">4</span>
+            <p class="when-barrier"><strong>Vague link and button text.</strong> &quot;Click here&quot; and &quot;Add&quot; mean nothing out of context.</p>
+            <p class="when-fixed"><strong>Clear labels.</strong> Each link and button says exactly what it does.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section two-col reveal" aria-labelledby="who">
+      <div class="prose">
+        <h2 id="who">Who this affects</h2>
+        <p>Low vision covers many things: blurry sight, cataracts, glaucoma, losing central or side vision, or simply ageing eyes. Many people zoom their screen to <strong>200%</strong> or more, and blind people use <em>screen readers</em> that read the page aloud.</p>
+        <p>Strong contrast also helps everyone reading a phone outside in bright Accra sunshine.</p>
+      </div>
+      <div class="card">
+        <h2>Tips for your own pages</h2>
+        <ul class="tips">
+          <li>Keep a contrast ratio of at least 4.5 to 1 for normal text.</li>
+          <li>Use <code>rem</code> units so text follows the reader's font settings.</li>
+          <li>Give every meaningful image an <code>alt</code> description.</li>
+          <li>Use <code>alt=""</code> for decorative images so screen readers skip them.</li>
+          <li>Check your page still works when zoomed to 200%.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="code">
+      <h2 id="code">The code behind the fix</h2>
+<pre><code>&lt;img src="kente.jpg"
+     alt="Hand-woven kente cloth with gold, green, red and black stripes"&gt;
+
+&lt;a href="kente.html"&gt;See all kente cloth (24 items)&lt;/a&gt;
+
+/* CSS */
+body { font-size: 1rem; color: #222; }   /* not 11px light grey */</code></pre>
+    </section>
+
+    <nav class="pager" aria-label="Previous and next page">
+      <a class="prev" href="hearing.html"><small>Previous</small>Hearing</a>
+      <a class="next" href="colour-blindness.html"><small>Next</small>Colour blindness</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-big">If one person can't get in, the website <em>isn't finished.</em></p>
+      <p><strong>Barrier/Fix</strong> is a student project about web accessibility, built with HTML and CSS only.</p>
+      <p>Made by Ewurabena Pinkra Amissah-Arthur &middot; 2026 &middot; <a href="about.html">Accessibility statement</a></p>
+    </div>
+  </footer>
+</body>
+</html>
